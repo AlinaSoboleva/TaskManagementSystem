@@ -21,9 +21,6 @@ CREATE TABLE IF NOT EXISTS USER_ROLES(
 
 INSERT INTO ROLES(name) values ('ROLE_USER');
 
-insert into USERS(username, email, password) values ('alina', 'admin@mail.ru', 'admin');
-
-
 CREATE TABLE IF NOT EXISTS TASK(
 id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 title VARCHAR(255) NOT NULL,

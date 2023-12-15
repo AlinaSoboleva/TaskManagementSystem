@@ -26,15 +26,15 @@ public class Comment {
     @Getter(AccessLevel.NONE)
     private User author;
 
-    public Long getAuthorId(){
+    public Long getAuthorId() {
         return author.getId();
     }
 
-    public String getAuthorName(){
+    public String getAuthorName() {
         return author.getUsername();
     }
 
-    public Long getTaskId(){
+    public Long getTaskId() {
         return task.getId();
     }
 }

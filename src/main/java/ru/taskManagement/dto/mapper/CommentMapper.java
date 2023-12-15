@@ -7,7 +7,7 @@ import ru.taskManagement.model.User;
 
 public class CommentMapper {
 
-    public static Comment toEntity(CommentDto commentDto, User author, Task task){
+    public static Comment toEntity(CommentDto commentDto, User author, Task task) {
         if (commentDto == null) return null;
 
         Comment comment = new Comment();
@@ -18,7 +18,7 @@ public class CommentMapper {
         return comment;
     }
 
-    public static CommentDto toDto(Comment comment){
+    public static CommentDto toDto(Comment comment) {
         if (comment == null) return null;
 
         return CommentDto.builder()

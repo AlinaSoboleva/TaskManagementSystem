@@ -12,21 +12,21 @@ import java.util.List;
 
 public class TaskMapper {
 
-    public static Task toEntity(TaskDto taskDto, User author, User executor){
+    public static Task toEntity(TaskDto taskDto, User author, User executor) {
         if (taskDto == null) return null;
 
         Task task = new Task();
         task.setTitle(taskDto.getTitle());
         task.setDescription(taskDto.getDescription());
-        task.setStatus(taskDto.getStatus() == null? Status.NEW : taskDto.getStatus());
-        task.setPriority(taskDto.getPriority() == null? Priority.NORMAL : taskDto.getPriority());
+        task.setStatus(taskDto.getStatus() == null ? Status.NEW : taskDto.getStatus());
+        task.setPriority(taskDto.getPriority() == null ? Priority.NORMAL : taskDto.getPriority());
         task.setAuthor(author);
         task.setExecutor(executor);
 
         return task;
     }
 
-    public static TaskResponseDto toResponseDto(Task task, List<CommentDto> comments){
+    public static TaskResponseDto toResponseDto(Task task, List<CommentDto> comments) {
         if (task == null) return null;
 
         return TaskResponseDto.builder()
@@ -41,7 +41,7 @@ public class TaskMapper {
                 .build();
     }
 
-    public static TaskDto toDto(Task task){
+    public static TaskDto toDto(Task task) {
         if (task == null) return null;
 
         return TaskDto.builder()

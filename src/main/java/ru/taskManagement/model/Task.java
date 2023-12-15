@@ -1,8 +1,8 @@
 package ru.taskManagement.model;
 
+import lombok.*;
 import ru.taskManagement.enumeration.Priority;
 import ru.taskManagement.enumeration.Status;
-import lombok.*;
 
 import javax.persistence.*;
 
@@ -41,12 +41,12 @@ public class Task {
     @Getter(AccessLevel.NONE)
     private User executor;
 
-    public Long getAuthorId(){
+    public Long getAuthorId() {
         if (author == null) return 0L;
         return author.getId();
     }
 
-    public Long getExecutorId(){
+    public Long getExecutorId() {
         if (executor == null) return 0L;
         return executor.getId();
     }

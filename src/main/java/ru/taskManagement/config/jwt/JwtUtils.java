@@ -33,15 +33,15 @@ public class JwtUtils {
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwt);
             return true;
-        }catch (MalformedJwtException e){
+        } catch (MalformedJwtException e) {
             log.warn(e.getMessage());
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             log.warn(e.getMessage());
         }
         return false;
     }
 
-    public String getEmailFromJwtToken(String jwt){
+    public String getEmailFromJwtToken(String jwt) {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(jwt).getBody().getSubject();
     }
 }

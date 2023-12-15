@@ -1,8 +1,12 @@
 package ru.taskManagement.provider;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import ru.taskManagement.dto.CommentDto;
 import ru.taskManagement.dto.mapper.CommentMapper;
 import ru.taskManagement.enumeration.ERole;
+import ru.taskManagement.exceptions.EntityNotFoundException;
 import ru.taskManagement.model.Comment;
 import ru.taskManagement.model.Role;
 import ru.taskManagement.model.Task;
@@ -10,10 +14,6 @@ import ru.taskManagement.model.User;
 import ru.taskManagement.repository.CommentRepository;
 import ru.taskManagement.repository.RoleRepository;
 import ru.taskManagement.repository.TaskRepository;
-import ru.taskManagement.exceptions.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import ru.taskManagement.repository.UserRepository;
 
 import java.util.List;
@@ -53,13 +53,13 @@ public class GetProvider {
                 new EntityNotFoundException(String.format("Задача с id %d не найдена", taskId)));
     }
 
-    public Role getRileByName(ERole eRole){
+    public Role getRileByName(ERole eRole) {
         return roleRepository
                 .findByName(eRole)
                 .orElseThrow(() -> new EntityNotFoundException("Ошибка: роль USER не найдена"));
     }
 
-    public List<CommentDto> getCommentDtoList(Long taskId){
+    public List<CommentDto> getCommentDtoList(Long taskId) {
         return commentRepository.findAllByTask_Id(taskId)
                 .stream().map(CommentMapper::toDto).collect(Collectors.toList());
     }
