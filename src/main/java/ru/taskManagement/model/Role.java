@@ -1,13 +1,16 @@
 package ru.taskManagement.model;
 
-import lombok.Data;
+import lombok.*;
 import ru.taskManagement.enumeration.ERole;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "roles")
-@Data
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role {
 
     @Id

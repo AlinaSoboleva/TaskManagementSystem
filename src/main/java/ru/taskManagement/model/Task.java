@@ -5,13 +5,13 @@ import ru.taskManagement.enumeration.Priority;
 import ru.taskManagement.enumeration.Status;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Entity
 @Table(name = "task")
 public class Task {
@@ -49,5 +49,18 @@ public class Task {
     public Long getExecutorId() {
         if (executor == null) return 0L;
         return executor.getId();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description);
     }
 }
