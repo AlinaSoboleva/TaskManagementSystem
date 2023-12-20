@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Setter
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 public class Role {
 
     @Id
@@ -22,9 +21,5 @@ public class Role {
     private ERole name;
 
     public Role() {
-    }
-
-    public Role(ERole name) {
-        this.name = name;
     }
 }
