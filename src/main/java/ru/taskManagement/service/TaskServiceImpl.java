@@ -137,17 +137,17 @@ public class TaskServiceImpl implements TaskService {
     }
 
     private void checkRightToDeleteComment(Comment comment, Task task, Long userId) {
-        if (comment.getAuthorId() != userId || task.getAuthorId() != userId)
+        if (!comment.getAuthorId().equals(userId) || !task.getAuthorId().equals(userId))
             throw new ConflictException(String.format("Пользователь с id %d не имеет права удалять комментарий с id %d", userId, comment.getId()));
     }
 
     private void checkTaskAuthor(Task task, Long authorId) {
-        if (task.getAuthorId() != authorId)
+        if (!task.getAuthorId().equals(authorId))
             throw new ConflictException(String.format("Пользователь с id %d не имеет права редактировать задачу с id %d", authorId, task.getId()));
     }
 
     private void checkTaskForStatusUpdate(Task task, Long userId) {
-        if (task.getExecutorId() != userId && task.getAuthorId() != userId)
+        if (!task.getExecutorId().equals(userId) && !task.getAuthorId().equals(userId))
             throw new ConflictException(String.format("Пользователь с id %d не имеет права менять статус задачи с id %d", userId, task.getId()));
     }
 }
